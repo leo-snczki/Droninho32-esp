@@ -1,0 +1,7 @@
+•	1x motor 1400KV 
+•	1x hélice
+•	1x bateria 2200mah 3S
+•	1x ESC
+•	1x ESP32
+•	1x breadboard
+•	3x cabos MM
