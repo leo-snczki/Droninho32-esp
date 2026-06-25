@@ -1,0 +1,7 @@
+# Artefactos de compilação do Arduino CLI (--export-binaries)
+Droninho32/build/
+**/build/
+
+# Ficheiros temporários
+*.tmp
+*.bak
