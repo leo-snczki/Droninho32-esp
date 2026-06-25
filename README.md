@@ -149,7 +149,7 @@ Os ESC precisam de aprender os pulsos mínimo/máximo. Faz isto **uma vez** por 
 ## Checklist de SEGURANÇA (obrigatório antes de cada teste)
 
 - [ ] **Hélices removidas** durante todos os testes de software.
-- [ ] `THROTTLE_MAX_TEST` baixo (começa em ~30–45%).
+- [ ] `THROTTLE_MAX_TEST` está a **100%** (limite removido a pedido) → **só testar SEM hélices** e subir o acelerador devagar, à mão.
 - [ ] Alimentação dos motores pela **bateria**, ESP pelo USB só para debug.
 - [ ] Confirmar no boot: estado `idle`, motores no mínimo, **não giram**.
 - [ ] Testar `arm` → motores continuam parados (throttle 0).
@@ -237,7 +237,7 @@ Assim, **controlo manual + telemetria de atitude** funcionam de imediato.
   e corrigir os alvos em `motors::setRC` antes da mistura. (Futuro, contrato §9.)
 - **WebSocket de telemetria** (`/ws`, 5–10 Hz): adicionar em `comms.cpp`; o MVP usa
   *polling* a `/api/telemetry`.
-- **ESP-CAM (vídeo):** módulo separado / segundo MCU; documentar como evolução.
+- **ESP32-CAM (vídeo):** **implementada** — sketch separado em `Droninho32_CAM/`. Liga-se ao AP `Droninho32` como estação (IP fixo `192.168.4.2`) e transmite MJPEG em `http://192.168.4.2/stream`. Compilar/gravar com a board **AI Thinker ESP32-CAM** (`esp32:esp32:esp32cam`); na ESP32-CAM, liga **IO0→GND** para entrar em modo de gravação. O firmware do S3 anuncia o `camera_url` em `/api/status`.
 - **Medição de bateria:** ligar um divisor resistivo ao ADC e pôr `BATTERY_ENABLED 1`.
 - **Mudar pinos/limites:** tudo em `config.h` — nenhum módulo tem "números mágicos".
 

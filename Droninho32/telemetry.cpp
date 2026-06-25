@@ -94,7 +94,8 @@ String buildStatusJson(const String& ip) {
   doc["uptime_ms"] = (uint32_t)millis();
   doc["armed"]     = motors::isArmed();
   doc["status"]    = comms::stateName();
-  doc["ip"]        = ip;
+  doc["ip"]         = ip;
+  doc["camera_url"] = CAMERA_URL;
 
   String out;
   serializeJson(doc, out);

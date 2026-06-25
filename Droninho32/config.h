@@ -57,7 +57,7 @@ static const uint8_t MOTOR_PINS[MOTOR_COUNT] = { 10, 11, 12, 13 };
 // ----------------------------------------------------------------------------
 // Limite de acelerador em testes: 0..100 (%). Comeca BAIXO. So subir depois de
 // validar SEM helices. Saturamos qualquer pedido a este valor.
-#define THROTTLE_MAX_TEST   45         // % — teto de seguranca para testes em bancada
+#define THROTTLE_MAX_TEST   100        // % — SEM limite de potencia (a pedido). ATENCAO: testa SEMPRE sem helices!
 
 // Rampa: variacao maxima de potencia (em %) por ciclo de atualizacao dos motores.
 // Evita saltos bruscos de RPM. Com MOTOR_UPDATE_MS=20ms e step=2%, sobe ~100%/s.
@@ -89,6 +89,14 @@ static const uint8_t MOTOR_PINS[MOTOR_COUNT] = { 10, 11, 12, 13 };
 #define AP_IP_1  168
 #define AP_IP_2  4
 #define AP_IP_3  1
+
+// ----------------------------------------------------------------------------
+//  ESP32-CAM (placa SEPARADA — liga-se a este AP como estacao em IP fixo).
+//  O S3 nao comunica com a camara; apenas ANUNCIA o URL em /api/status para a app.
+// ----------------------------------------------------------------------------
+#define CAMERA_IP            "192.168.4.2"
+#define CAMERA_URL           "http://192.168.4.2/stream"   // video MJPEG
+#define CAMERA_SNAPSHOT_URL  "http://192.168.4.2/jpg"      // imagem unica
 
 // ----------------------------------------------------------------------------
 //  IMU — MPU6050 / GY-521 via I2C
